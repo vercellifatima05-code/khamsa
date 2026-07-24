@@ -1,0 +1,33 @@
+KHAMSA — Landing page para código QR
+=====================================
+
+ARCHIVOS
+- index.html      → página principal (inicio, catálogo, guía, modo de uso)
+- styles.css       → estilos
+- script.js        → navegación entre secciones
+- qr-print.html    → cartel imprimible con el código QR
+- assets/khamsa-logo.png → tu logo (Mano de Fátima)
+
+CÓMO PUBLICARLA (GitHub Pages, gratis)
+1. Creá un repositorio nuevo en GitHub.
+2. Subí estos 4 archivos y la carpeta "assets" manteniendo la misma estructura.
+3. Andá a Settings → Pages → elegí la rama "main" como fuente.
+4. En unos minutos tu sitio va a estar en https://tu-usuario.github.io/nombre-repo/
+
+También podés subir la misma carpeta a cualquier hosting (Hostinger, Netlify,
+Vercel, etc.) sin cambiar nada.
+
+CÓMO GENERAR EL CARTEL CON EL QR
+1. Publicá primero la página (paso anterior) y copiá su URL final.
+2. Abrí qr-print.html en el navegador.
+3. Pegá la URL en el campo de arriba — el QR se genera solo.
+4. Apretá "Imprimir cartel" (queda ajustado a una hoja tamaño 10,5 x 14,8 cm,
+   ideal para una tarjeta o cartel de mostrador).
+
+PARA EDITAR TEXTOS O PRECIOS
+Todo el contenido (productos, plantas, dosis) está directamente en index.html,
+buscá el texto que querés cambiar y reemplazalo — no hace falta tocar nada más.
+
+Instagram y WhatsApp aparecen en el encabezado y en el pie de página; si en
+algún momento cambian, buscá "khamsabiomagnetismo" y "2944319543" en
+index.html y qr-print.html y reemplazalos ahí.

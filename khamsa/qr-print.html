@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Khamsa · Cartel QR para imprimir</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  body{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:40px 16px 80px;
+    background:var(--bg);
+  }
+
+  .setup{
+    width:100%;
+    max-width:420px;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius-sm);
+    padding:22px 24px;
+    margin-bottom:34px;
+    box-shadow:var(--shadow-sm);
+  }
+  .setup label{
+    display:block;
+    font-size:0.78rem;
+    font-weight:600;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--violet);
+    margin-bottom:8px;
+  }
+  .setup input{
+    width:100%;
+    font-family:var(--font-body);
+    font-size:0.95rem;
+    padding:11px 14px;
+    border:1px solid var(--line);
+    border-radius:10px;
+    outline:none;
+    background:var(--bg-lavender);
+    color:var(--ink);
+  }
+  .setup input:focus{ border-color:var(--violet); }
+  .setup small{ display:block; margin-top:8px; color:var(--ink-soft); font-size:0.78rem; }
+
+  .print-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin-top:16px;
+    background:var(--grad-hand);
+    color:#fff;
+    border:none;
+    padding:11px 20px;
+    border-radius:999px;
+    font-family:var(--font-body);
+    font-weight:500;
+    font-size:0.88rem;
+    cursor:pointer;
+    box-shadow:var(--shadow-sm);
+  }
+  .print-btn svg{ width:16px; height:16px; }
+
+  /* -------- printable ticket -------- */
+  .ticket{
+    width:420px;
+    max-width:92vw;
+    background:var(--card);
+    border-radius:28px;
+    border:1px solid var(--line);
+    padding:44px 36px 36px;
+    text-align:center;
+    box-shadow:var(--shadow);
+    position:relative;
+    overflow:hidden;
+  }
+  .ticket::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:28px;
+    padding:2px;
+    background:var(--grad-hand);
+    -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite:xor;
+    mask-composite:exclude;
+    opacity:0.55;
+    pointer-events:none;
+  }
+
+  .ticket .eyebrow{ display:block; margin-bottom:18px; }
+
+  .qr-frame{
+    width:260px;
+    height:260px;
+    margin:0 auto 22px;
+    padding:14px;
+    background:#fff;
+    border-radius:20px;
+    border:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .qr-frame img{ width:100%; height:100%; }
+
+  .ticket .mark{
+    width:64px;
+    margin:6px auto 14px;
+  }
+
+  .ticket h2{
+    font-size:1.5rem;
+    margin-bottom:2px;
+  }
+  .ticket .sub{
+    font-family:var(--font-display);
+    font-style:italic;
+    color:var(--violet);
+    font-size:0.95rem;
+    margin-bottom:22px;
+  }
+
+  .contact-tag{
+    display:inline-flex;
+    flex-direction:column;
+    gap:10px;
+    padding:16px 22px;
+    border:1px dashed var(--gold);
+    border-radius:16px;
+    background:var(--bg-lavender);
+  }
+  .contact-tag .row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:0.88rem;
+    font-weight:500;
+    color:var(--ink);
+  }
+  .contact-tag svg{ width:17px; height:17px; flex-shrink:0; }
+  .contact-tag .row.ig svg{ color:var(--violet); }
+  .contact-tag .row.wa svg{ color:var(--blue-deep); }
+
+  .ticket footer{
+    margin-top:22px;
+    font-size:0.68rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+
+  @media print{
+    @page{ size:105mm 148mm; margin:0; }
+    body{ padding:0; background:#fff; }
+    .setup, .print-btn{ display:none !important; }
+    .ticket{
+      box-shadow:none;
+      border-radius:0;
+      border:none;
+      width:105mm;
+      max-width:105mm;
+      height:148mm;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      margin:0;
+    }
+    .ticket::before{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-veil" aria-hidden="true"></div>
+
+<div class="setup">
+  <label for="url-input">URL de la página publicada</label>
+  <input id="url-input" type="url" placeholder="https://tu-sitio.github.io/khamsa/" value="https://khamsabiomagnetismo.example.com">
+  <small>Pegá acá la dirección final una vez que publiques el sitio (en GitHub Pages o tu hosting). El código QR se actualiza solo.</small>
+  <br>
+  <button class="print-btn" onclick="window.print()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v8H6z"/></svg>
+    Imprimir cartel
+  </button>
+</div>
+
+<div class="ticket">
+  <span class="eyebrow">Escaneá para conocernos</span>
+
+  <div class="qr-frame">
+    <img id="qr-img" src="" alt="Código QR de acceso a la página de Khamsa">
+  </div>
+
+  <img class="mark" src="assets/khamsa-logo.png" alt="Khamsa — Mano de Fátima">
+
+  <h2>Khamsa</h2>
+  <div class="sub">Terapia Holística</div>
+
+  <div class="contact-tag">
+    <span class="row ig">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+      @khamsabiomagnetismo
+    </span>
+    <span class="row wa">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21l1.5-4.5A8 8 0 1 1 8 20L3 21z"/><path d="M8.5 9.5c0 3.5 2.5 6 6 6" stroke-linecap="round"/></svg>
+      2944 319543
+    </span>
+  </div>
+
+  <footer>Biomagnetismo · Fitoterapia · Bienestar</footer>
+</div>
+
+<script>
+  var input = document.getElementById("url-input");
+  var qrImg = document.getElementById("qr-img");
+
+  function updateQR() {
+    var url = input.value.trim() || "https://khamsabiomagnetismo.example.com";
+    var encoded = encodeURIComponent(url);
+    qrImg.src = "https://api.qrserver.com/v1/create-qr-code/?size=500x500&margin=0&color=22398F&bgcolor=FFFFFF&data=" + encoded;
+  }
+
+  input.addEventListener("input", updateQR);
+  updateQR();
+</script>
+
+</body>
+</html>
