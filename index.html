@@ -22,6 +22,18 @@
         <span class="brand-sub">Terapia Holística</span>
       </span>
     </button>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/></svg>
+    </button>
+    <nav class="main-nav" id="mainNav" aria-label="Secciones">
+      <button class="nav-link" data-nav="home">Inicio</button>
+      <button class="nav-link" data-nav="sobre-mi">Sobre mí</button>
+      <button class="nav-link" data-nav="terapias">Terapias</button>
+      <button class="nav-link" data-nav="catalogo">Productos</button>
+      <button class="nav-link" data-nav="galeria">Galería</button>
+      <button class="nav-link" data-nav="turno">Reservá tu turno</button>
+      <button class="nav-link" data-nav="contacto">Contacto</button>
+    </nav>
     <nav class="header-contact" aria-label="Contacto">
       <a class="chip ig" href="https://instagram.com/khamsabiomagnetismo" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
@@ -48,6 +60,28 @@
         <p class="hero-therapist">M. Fátima Vercelli<span>Terapeuta Holística</span></p>
 
         <div class="choice-grid">
+          <button class="choice-card" data-nav="terapias">
+            <span class="choice-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <h3>✨ Terapias</h3>
+            <p>Biomagnetismo, sonoterapia, esencias florales y más — presenciales y online.</p>
+            <span class="choice-cta">Ver terapias
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </button>
+
+          <button class="choice-card" data-nav="turno">
+            <span class="choice-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="17" rx="3"/><path d="M8 2v4M16 2v4M3 10h18" stroke-linecap="round"/></svg>
+            </span>
+            <h3>📅 Reservá tu turno</h3>
+            <p>Elegí el día y horario que mejor te queden y coordiná tu sesión en un momento.</p>
+            <span class="choice-cta">Reservar
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </button>
+
           <button class="choice-card" data-nav="catalogo">
             <span class="choice-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21c-4-1-7-4-7-9V5l7-2 7 2v7c0 5-3 8-7 9z"/><path d="M9 11l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -73,6 +107,73 @@
       </div>
     </div>
   </section>
+
+  <!-- ============ SOBRE MÍ ============ -->
+  <section id="view-sobre-mi" class="view">
+    <div class="container">
+      <button class="back-link" data-nav="home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Volver al inicio
+      </button>
+
+      <div class="section-head">
+        <img class="divider-mark" src="assets/khamsa-logo.png" alt="" aria-hidden="true">
+        <span class="eyebrow">Conocé a Fátima</span>
+        <h2>Sobre mí</h2>
+      </div>
+
+      <div class="about-card">
+        <img class="about-mark" src="assets/khamsa-logo.png" alt="Mano de Fátima — Khamsa">
+        <div class="about-text">
+          <p class="about-lead">Hoy, más que nunca, creo en la integración de las medicinas.</p>
+          <p class="about-lead">Hoy, más que nunca, mi camino está inspirado en la integración.</p>
+          <p>Después de una experiencia que transformó profundamente mi vida, comprendí en mi propio cuerpo el significado de tomar, recibir, honrar e integrar aquello que nos es dado. Esa vivencia fortaleció mi mirada sobre la salud como un proceso integral, que involucra cuerpo, mente, emociones y espíritu.</p>
+          <p>Desde ese lugar acompaño a cada persona, respetando sus tiempos, su historia y sus necesidades, para favorecer procesos de bienestar, equilibrio y transformación.</p>
+          <p class="about-signature">Soy <strong>M. Fátima Vercelli, Terapeuta Holística Integral</strong>.</p>
+          <p>En mis espacios de acompañamiento integro diferentes herramientas y terapias, de acuerdo con las necesidades y el momento que atraviesa cada persona.</p>
+          <p>Mi propuesta busca acompañar a cada persona desde una mirada integral, respetuosa y personalizada.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TERAPIAS ============ -->
+  <section id="view-terapias" class="view">
+    <div class="container">
+      <button class="back-link" data-nav="home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Volver al inicio
+      </button>
+
+      <div class="section-head">
+        <img class="divider-mark" src="assets/khamsa-logo.png" alt="" aria-hidden="true">
+        <span class="eyebrow">Acompañamiento integral</span>
+        <h2>Terapias</h2>
+        <p>Tocá cada terapia para conocer en qué consiste. Filtrá por modalidad si preferís presencial u online.</p>
+      </div>
+
+      <div class="filter-pills" role="tablist" aria-label="Filtrar por modalidad">
+        <button class="pill active" data-filter="todas">Todas</button>
+        <button class="pill" data-filter="Presencial">Presenciales</button>
+        <button class="pill" data-filter="Online">Online</button>
+        <button class="pill" data-filter="Presencial y Online">Presencial y Online</button>
+      </div>
+
+      <div class="therapy-grid" id="therapyGrid"><!-- generado por script.js --></div>
+    </div>
+  </section>
+
+  <!-- Modal de terapia -->
+  <div class="modal-veil" id="therapyModal" aria-hidden="true">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalClose" aria-label="Cerrar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg>
+      </button>
+      <span class="modal-tag" id="modalTag"></span>
+      <h3 id="modalTitle"></h3>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
 
   <!-- ============ SECCIÓN 1 · CATÁLOGO ============ -->
   <section id="view-catalogo" class="view">
@@ -114,7 +215,7 @@
         <div class="product-card highlight">
           <span class="tag">Consultas</span>
           <h3>Asesoramiento personalizado</h3>
-          <p>Acompañamiento terapéutico y orientación sobre otras hierbas medicinales según cada necesidad.</p>
+          <p>Acompañamiento terapéutico y orientación sobre plantas medicinales y esencias florales según cada necesidad.</p>
           <div class="therapist">M. Fátima Vercelli<span>Terapeuta Holística</span></div>
         </div>
       </div>
@@ -456,6 +557,127 @@
       <div class="notice">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8v.01M11 12h1v5h1" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <p>La información presentada tiene fines educativos e informativos sobre el uso tradicional de las plantas medicinales. No reemplaza el diagnóstico, tratamiento ni seguimiento por parte de profesionales de la salud.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GALERÍA ============ -->
+  <section id="view-galeria" class="view">
+    <div class="container">
+      <button class="back-link" data-nav="home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Volver al inicio
+      </button>
+
+      <div class="section-head">
+        <img class="divider-mark" src="assets/khamsa-logo.png" alt="" aria-hidden="true">
+        <span class="eyebrow">Mi trabajo</span>
+        <h2>Galería</h2>
+        <p>Espacios de atención, talleres, Baños de Gong y plantas medicinales.</p>
+      </div>
+
+      <div class="gallery-grid" id="galleryGrid"><!-- generado por script.js --></div>
+    </div>
+  </section>
+
+  <!-- Lightbox de galería -->
+  <div class="modal-veil" id="galleryLightbox" aria-hidden="true">
+    <div class="lightbox-box">
+      <button class="modal-close" id="lightboxClose" aria-label="Cerrar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg>
+      </button>
+      <img id="lightboxImg" src="" alt="">
+      <p id="lightboxCaption"></p>
+    </div>
+  </div>
+
+  <!-- ============ RESERVÁ TU TURNO ============ -->
+  <section id="view-turno" class="view">
+    <div class="container">
+      <button class="back-link" data-nav="home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Volver al inicio
+      </button>
+
+      <div class="section-head">
+        <img class="divider-mark" src="assets/khamsa-logo.png" alt="" aria-hidden="true">
+        <span class="eyebrow">Coordiná tu sesión</span>
+        <h2>Reservá tu turno</h2>
+        <p>Elegí día y horario. Al confirmar, se abre WhatsApp con tu solicitud lista para enviarme.</p>
+      </div>
+
+      <form class="booking-form" id="bookingForm" novalidate>
+        <div class="form-grid">
+          <label class="field">
+            <span>Nombre *</span>
+            <input type="text" name="nombre" required autocomplete="given-name">
+          </label>
+          <label class="field">
+            <span>Apellido *</span>
+            <input type="text" name="apellido" required autocomplete="family-name">
+          </label>
+          <label class="field">
+            <span>Teléfono *</span>
+            <input type="tel" name="telefono" required autocomplete="tel" placeholder="Ej: 2944 000000">
+          </label>
+          <label class="field">
+            <span>Edad *</span>
+            <input type="number" name="edad" required min="1" max="120">
+          </label>
+          <label class="field">
+            <span>Día *</span>
+            <input type="date" name="dia" id="fieldDia" required>
+          </label>
+          <label class="field">
+            <span>Horario *</span>
+            <select name="horario" id="fieldHorario" required>
+              <option value="" disabled selected>Elegí un horario</option>
+            </select>
+          </label>
+        </div>
+        <label class="field full">
+          <span>Motivo o descripción (opcional)</span>
+          <textarea name="motivo" rows="3" placeholder="Contame brevemente qué te sucede o qué necesitás"></textarea>
+        </label>
+
+        <p class="form-notice" id="formNotice">Los turnos se pueden reservar con un mínimo de 24 horas de anticipación. Atención de lunes a viernes, de 10:00 a 18:00 hs.</p>
+        <p class="form-error" id="formError" hidden></p>
+
+        <button type="submit" class="btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21l1.5-4.5A8 8 0 1 1 8 20L3 21z"/><path d="M8.5 9.5c0 3.5 2.5 6 6 6" stroke-linecap="round"/></svg>
+          Reservar turno
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ CONTACTO ============ -->
+  <section id="view-contacto" class="view">
+    <div class="container">
+      <button class="back-link" data-nav="home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Volver al inicio
+      </button>
+
+      <div class="section-head">
+        <img class="divider-mark" src="assets/khamsa-logo.png" alt="" aria-hidden="true">
+        <span class="eyebrow">Estoy para ayudarte</span>
+        <h2>Contacto</h2>
+      </div>
+
+      <div class="contact-card">
+        <p>¿Tenés alguna duda, consulta o inquietud?</p>
+        <p>Comunicate conmigo a través del número de contacto disponible en esta aplicación.</p>
+        <div class="contact-actions">
+          <a class="btn-primary" href="https://wa.me/542944319543" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21l1.5-4.5A8 8 0 1 1 8 20L3 21z"/><path d="M8.5 9.5c0 3.5 2.5 6 6 6" stroke-linecap="round"/></svg>
+            Escribime por WhatsApp
+          </a>
+          <a class="btn-secondary" href="https://instagram.com/khamsabiomagnetismo" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+            @khamsabiomagnetismo
+          </a>
+        </div>
       </div>
     </div>
   </section>
