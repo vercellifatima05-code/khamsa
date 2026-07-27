@@ -4,7 +4,7 @@
 (function () {
   "use strict";
 
-  var VALID_VIEWS = ["home", "sobre-mi", "terapias", "catalogo", "guia", "modo-uso", "galeria", "turno", "contacto"];
+  var VALID_VIEWS = ["home", "sobre-mi", "terapias", "catalogo", "guia", "modo-uso", "galeria", "turno", "contacto", "admin"];
 
   /* ---------------------------------------------------------
      NAVEGACIÓN
