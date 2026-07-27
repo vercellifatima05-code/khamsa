@@ -1,0 +1,54 @@
+CÓMO SUBIR ESTOS CAMBIOS A TU SITIO — KHAMSA
+=============================================
+
+QUÉ HACE ESTA ACTUALIZACIÓN
+- Los turnos ahora se guardan en una base de datos real (Firestore),
+  así que dos personas NUNCA van a poder reservar el mismo día y
+  horario, aunque entren al mismo tiempo desde celulares distintos.
+- Aparece un botón "Admin" en el menú. Ahí, con tu mail
+  (vercellifatima05@gmail.com) y una contraseña que vos elegís,
+  podés:
+    · Elegir qué días y horarios atendés (se aplica al instante
+      en el formulario de reservas de todo el mundo).
+    · Ver la lista de próximos turnos reservados con los datos
+      de cada persona.
+    · Cancelar un turno (libera automáticamente ese horario para
+      que otra persona lo pueda tomar).
+
+ANTES DE SUBIR: 2 pasos únicos en Firebase (una sola vez)
+1. Abrí REGLAS-FIRESTORE.txt de esta misma carpeta y seguí las
+   instrucciones para pegar las reglas de seguridad y crear tu
+   usuario de administradora. Es imprescindible hacerlo, si no el
+   sitio no va a poder guardar ni leer turnos.
+2. Andá a Firestore Database en la consola de Firebase y creá la
+   base de datos si todavía no existe (modo producción está bien,
+   ya que las reglas del paso anterior la protegen).
+
+CÓMO SUBIR LOS ARCHIVOS A GITHUB
+1. Entrá a tu repositorio: https://github.com/vercellifatima05-code/khamsa
+2. Subí (reemplazando los que ya existen) estos archivos de esta
+   carpeta:
+   - index.html
+   - script.js
+   - styles.css
+   - firebase-app.js   (es un archivo NUEVO, asegurate de subirlo)
+3. Esperá 1-2 minutos y recargá https://vercellifatima05-code.github.io/khamsa/
+   (puede que necesites Ctrl+Shift+R para forzar que se actualice
+   la versión guardada en el navegador).
+
+CÓMO PROBAR QUE FUNCIONA
+1. Andá al botón "Admin" del menú, iniciá sesión con tu mail y la
+   contraseña que configuraste en Firebase.
+2. Marcá tus días y horarios de atención y guardalos.
+3. Volvé a "Reservá tu turno" y confirmá que aparezcan esos horarios.
+4. Probá reservar un turno de prueba, y fijate que en el panel de
+   Admin aparezca en "Próximos turnos reservados".
+5. Cancelalo desde ahí para dejar todo limpio.
+
+SI ALGO NO FUNCIONA
+Lo más común es que falte:
+ - Habilitar "Correo electrónico/contraseña" en Authentication.
+ - Crear el usuario administradora con ese mail exacto.
+ - Pegar y publicar las reglas de Firestore.
+ - Crear la base de datos de Firestore si no existía.
+Revisá esos 4 puntos en REGLAS-FIRESTORE.txt.

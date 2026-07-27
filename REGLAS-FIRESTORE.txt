@@ -1,0 +1,60 @@
+REGLAS DE SEGURIDAD DE FIRESTORE — KHAMSA
+==========================================
+
+Cómo aplicarlas:
+1. Andá a https://console.firebase.google.com/project/khamsa-web/firestore/rules
+2. Reemplazá todo el contenido por lo que está entre las líneas de guiones.
+3. Apretá "Publicar" / "Publish".
+
+------------------------------------------
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Configuración de días/horarios de atención: cualquiera puede
+    // leerla (para saber qué horarios ofrecer), solo la administradora
+    // puede modificarla.
+    match /config/{docId} {
+      allow read: if true;
+      allow write: if request.auth != null
+                   && request.auth.token.email == "vercellifatima05@gmail.com";
+    }
+
+    // "slots": un documento por día+horario reservado. Público para
+    // leer (así se puede saber qué horarios ya están ocupados) y para
+    // crear (para reservar) — pero NUNCA se puede sobreescribir ni
+    // borrar un slot ya creado desde el cliente público, solo la
+    // administradora puede borrarlo (al cancelar un turno).
+    match /slots/{slotId} {
+      allow read: if true;
+      allow create: if true;
+      allow update: if false;
+      allow delete: if request.auth != null
+                    && request.auth.token.email == "vercellifatima05@gmail.com";
+    }
+
+    // "turnos": datos personales de cada reserva (nombre, teléfono,
+    // etc). Cualquiera puede CREAR uno (al reservar), pero solo la
+    // administradora puede LEER o BORRAR la lista — así los datos de
+    // tus clientes no quedan expuestos públicamente.
+    match /turnos/{turnoId} {
+      allow create: if true;
+      allow read, delete: if request.auth != null
+                           && request.auth.token.email == "vercellifatima05@gmail.com";
+      allow update: if false;
+    }
+  }
+}
+------------------------------------------
+
+PASO IMPORTANTE ADEMÁS DE LAS REGLAS:
+Tenés que crear tu usuario de administradora en Firebase Authentication
+(las reglas de arriba no alcanzan solas, necesitás poder iniciar sesión):
+
+1. Andá a https://console.firebase.google.com/project/khamsa-web/authentication/providers
+2. Habilitá el proveedor "Correo electrónico/contraseña" (Email/Password).
+3. Andá a la pestaña "Users" / "Usuarios" y agregá un usuario nuevo:
+   - Mail: vercellifatima05@gmail.com
+   - Contraseña: la que quieras usar para entrar al panel de admin.
+4. Listo — con ese mail y esa contraseña vas a poder entrar al botón
+   "Admin" que aparece en el menú del sitio.

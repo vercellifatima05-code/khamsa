@@ -33,6 +33,7 @@
       <button class="nav-link" data-nav="galeria">Galería</button>
       <button class="nav-link" data-nav="turno">Reservá tu turno</button>
       <button class="nav-link" data-nav="contacto">Contacto</button>
+      <button class="nav-link nav-link-admin" data-nav="admin" title="Acceso administradora">Admin</button>
     </nav>
     <nav class="header-contact" aria-label="Contacto">
       <a class="chip ig" href="https://instagram.com/khamsabiomagnetismo" target="_blank" rel="noopener">
@@ -682,6 +683,62 @@
     </div>
   </section>
 
+  <!-- ============ ADMIN ============ -->
+  <section id="view-admin" class="view">
+    <div class="container">
+      <button class="back-link" data-nav="home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Volver al inicio
+      </button>
+
+      <div class="section-head">
+        <img class="divider-mark" src="assets/khamsa-logo.png" alt="" aria-hidden="true">
+        <span class="eyebrow">Solo para Fátima</span>
+        <h2>Panel de administración</h2>
+      </div>
+
+      <!-- Login -->
+      <div id="adminLoginBox">
+        <form class="booking-form" id="adminLoginForm" novalidate>
+          <div class="form-grid">
+            <label class="field">
+              <span>Mail *</span>
+              <input type="email" name="email" required autocomplete="username" placeholder="vercellifatima05@gmail.com">
+            </label>
+            <label class="field">
+              <span>Contraseña *</span>
+              <input type="password" name="password" required autocomplete="current-password">
+            </label>
+          </div>
+          <p class="form-error" id="adminLoginError" hidden></p>
+          <button type="submit" class="btn-primary">Ingresar</button>
+        </form>
+      </div>
+
+      <!-- Panel (visible solo si el login fue exitoso) -->
+      <div id="adminPanelBox" hidden>
+        <button type="button" class="btn-secondary" id="adminLogoutBtn" style="margin-bottom:24px;">Cerrar sesión</button>
+
+        <h3>Días y horarios de atención</h3>
+        <form id="adminHorariosForm" class="booking-form" novalidate>
+          <div id="adminDias" class="admin-check-group"></div>
+
+          <div id="adminHoras" class="admin-hour-group"></div>
+          <div id="adminAddHourForm" class="admin-add-hour">
+            <input type="time" id="adminNewHour" step="1800">
+            <button type="button" id="adminAddHourBtn" class="btn-secondary">Agregar horario</button>
+          </div>
+
+          <p class="form-notice" id="adminHorariosMsg" hidden></p>
+          <button type="submit" class="btn-primary">Guardar horarios</button>
+        </form>
+
+        <h3 style="margin-top:40px;">Próximos turnos reservados</h3>
+        <div id="adminTurnosLista" class="admin-turnos-lista"></div>
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <!-- ============ FOOTER ============ -->
@@ -705,5 +762,6 @@
 </footer>
 
 <script src="script.js"></script>
+<script type="module" src="firebase-app.js"></script>
 </body>
 </html>

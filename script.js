@@ -307,103 +307,10 @@
 
   /* ---------------------------------------------------------
      RESERVA DE TURNOS
-     Configuración de días/horarios atendidos. Para cambiar
-     la disponibilidad, editá BUSINESS_DAYS (0=domingo … 6=
-     sábado) y BUSINESS_HOURS acá abajo.
-     Nota: esta validación corre en tu navegador. Para que el
-     horario quede automáticamente bloqueado para todas las
-     personas que visiten el sitio (y no solo en tu propio
-     navegador) hace falta una base de datos compartida —
-     ver la nota que te dejé aparte sobre los próximos pasos.
+     Ahora la maneja por completo firebase-app.js (bloqueo real
+     de horarios contra Firestore, para que dos personas nunca
+     puedan reservar el mismo día y hora).
      --------------------------------------------------------- */
-  var BUSINESS_DAYS = [1, 2, 3, 4, 5]; // lunes a viernes
-  var BUSINESS_HOURS = ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"];
-  var MIN_NOTICE_HOURS = 24;
-  var WHATSAPP_NUMBER = "542944319543";
-
-  function pad(n) { return n < 10 ? "0" + n : "" + n; }
-  function toISODate(d) { return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate()); }
-
-  function setupBookingForm() {
-    var form = document.getElementById("bookingForm");
-    if (!form) return;
-    var diaInput = document.getElementById("fieldDia");
-    var horarioSelect = document.getElementById("fieldHorario");
-    var errorEl = document.getElementById("formError");
-
-    var minDate = new Date();
-    minDate.setDate(minDate.getDate() + 1);
-    diaInput.min = toISODate(minDate);
-
-    function refreshHorarios() {
-      horarioSelect.innerHTML = '<option value="" disabled selected>Elegí un horario</option>';
-      if (!diaInput.value) return;
-      var parts = diaInput.value.split("-").map(Number);
-      var selected = new Date(parts[0], parts[1] - 1, parts[2]);
-      if (BUSINESS_DAYS.indexOf(selected.getDay()) === -1) {
-        var opt = document.createElement("option");
-        opt.disabled = true;
-        opt.textContent = "No hay atención ese día";
-        horarioSelect.appendChild(opt);
-        return;
-      }
-      BUSINESS_HOURS.forEach(function (h) {
-        var candidate = new Date(parts[0], parts[1] - 1, parts[2], Number(h.split(":")[0]), Number(h.split(":")[1]));
-        var diffHours = (candidate - new Date()) / 36e5;
-        if (diffHours >= MIN_NOTICE_HOURS) {
-          var opt = document.createElement("option");
-          opt.value = h;
-          opt.textContent = h + " hs";
-          horarioSelect.appendChild(opt);
-        }
-      });
-    }
-
-    diaInput.addEventListener("change", refreshHorarios);
-
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      errorEl.hidden = true;
-
-      var data = new FormData(form);
-      var nombre = data.get("nombre").trim();
-      var apellido = data.get("apellido").trim();
-      var telefono = data.get("telefono").trim();
-      var edad = data.get("edad");
-      var dia = data.get("dia");
-      var horario = data.get("horario");
-      var motivo = (data.get("motivo") || "").trim();
-
-      if (!nombre || !apellido || !telefono || !edad || !dia || !horario) {
-        errorEl.textContent = "Por favor completá todos los campos obligatorios.";
-        errorEl.hidden = false;
-        return;
-      }
-
-      var parts = dia.split("-").map(Number);
-      var chosen = new Date(parts[0], parts[1] - 1, parts[2], Number(horario.split(":")[0]), Number(horario.split(":")[1]));
-      var diffHours = (chosen - new Date()) / 36e5;
-      if (diffHours < MIN_NOTICE_HOURS) {
-        errorEl.textContent = "Los turnos se reservan con un mínimo de 24 horas de anticipación. Elegí otro horario.";
-        errorEl.hidden = false;
-        return;
-      }
-
-      var diaFormateado = pad(parts[2]) + "/" + pad(parts[1]) + "/" + parts[0];
-      var mensaje =
-        "Nueva solicitud de turno KHAMSA\n\n" +
-        "Nombre y apellido: " + nombre + " " + apellido + "\n" +
-        "Teléfono: " + telefono + "\n" +
-        "Edad: " + edad + "\n" +
-        "Día: " + diaFormateado + "\n" +
-        "Horario: " + horario + " hs" +
-        (motivo ? "\nMotivo o descripción: " + motivo : "");
-
-      window.open("https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(mensaje), "_blank");
-      form.reset();
-      horarioSelect.innerHTML = '<option value="" disabled selected>Elegí un horario</option>';
-    });
-  }
 
   /* ---------------------------------------------------------
      INIT
@@ -417,7 +324,6 @@
     setupTherapyFilters();
     setupTherapyModal();
     renderGallery();
-    setupBookingForm();
 
     // Only one accordion item open at a time, for a calmer reading experience
     var plants = document.querySelectorAll(".plant");
