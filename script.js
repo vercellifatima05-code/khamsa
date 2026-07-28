@@ -265,7 +265,7 @@
      de sesión, esta es la única forma de actualizar la
      galería (editando este archivo).
      --------------------------------------------------------- */
-  var GALLERY = [
+  var GALLERY = [ { src: "activos/gallery/bano-de-gong-1.png", caption: "Baño de Gong en la playa" },
     // { src: "assets/gallery/baño-de-gong-1.jpg", caption: "Baño de Gong grupal" },
     // { src: "assets/gallery/espacio-de-atencion.jpg", caption: "Espacio de atención — Pinamar" },
   ];
